@@ -1,0 +1,55 @@
+﻿<div class="row">
+    <div class="col-md-3 filters">
+        <h4>Filters</h4>
+        <hr />
+        <div class="row">
+            <p class="col-md-3">Type</p>
+            <div class="col-md-9">
+                <select class="form-control" [(ngModel)]="filters.Type" (change)="applyFilter()">
+                    <option value="0">Any</option>
+                    <option value="1">Dealer</option>
+                    <option value="2">Private</option>
+
+                </select>
+
+            </div>
+        </div>
+        <div class=row>
+            
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h2 class="subheader"></h2>
+        <h1 class="text-center" *ngIf="loadingError">Error Getting Cars</h1>
+        <h1 class="text-center" *ngIf="loading"><i class="fa fa-spinner fa-spin"></i> Loading Car List</h1>
+        <ul>
+            <li class="car-list" *ngFor="let item of data | paginate: { itemsPerPage: 4, currentPage: p }">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="img-responsive" src="{{item.imagePath}}" />
+                    </div>
+                    <div class="col-md-7">
+                        <ul>
+                            <li><h4>{{item.title}}</h4></li>
+                            <li>
+                                <strong>Price:</strong>&nbsp;
+                                <span>{{item.price | currency: 'AUD'}}</span>
+                            </li>
+                            <li>
+                                <strong>Listing Type:</strong>&nbsp;
+                                <span>{{types[item.type]}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <button [routerLink]="['car', item.id]"  class="btn btn-primary">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

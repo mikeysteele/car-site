@@ -1,0 +1,30 @@
+﻿<a href="/"></a>
+<div class="row">
+    <h1 class="text-center" *ngIf="loadingError">Error getting car</h1>
+    <h1 class="text-center" *ngIf="loading"><i class="fa fa-spinner fa-spin"></i> Loading Car Details</h1>
+    <div class="col-md-12" *ngIf="car">
+        <h4>
+            <a [routerLink]="['']"><i class="fa fa-arrow-left"></i>&nbsp;Back to cars</a>
+        </h4>
+        <br />
+        <h3>{{car.title}}</h3>
+        <div class="row" >
+            <div class="col-md-4 details">
+                <img class="img-responsive" src="{{car.imagePath}}" />
+            </div>
+            <div class="col-md-6 details">
+                <ul>
+                    <li><h4>{{car.title}}</h4></li>
+                    <li>
+                        <strong>Price:</strong>&nbsp;
+                        <span>{{car.price | currency: 'AUD'}}</span>
+                    </li>
+                    <li>
+                        <strong>Listing Type:</strong>&nbsp;
+                        <span>{{types[car.type]}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
