@@ -101,7 +101,6 @@
     <Compile Include="Controllers\Api\CarsControllerTests.cs" />
     <Compile Include="Controllers\HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CarServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarSite\CarSite.csproj">
